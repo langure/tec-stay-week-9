@@ -19,3 +19,11 @@ Example: Machine Translation
 In a machine translation task, when generating a translated word, the attention mechanism allows the model to focus on the relevant words in the input sentence. For example, when translating the English sentence "She loves cats" to French "Elle aime les chats", while generating the word "aime" (loves), the model might pay more attention to the input word "loves".
 
 The introduction of attention mechanisms has been a turning point in the development of sequence-to-sequence models, leading to state-of-the-art results in various tasks. Its ability to dynamically weight the importance of input elements brings significant improvements in handling long sequences and enhances the model's interpretability. Notably, the Transformer model, which relies entirely on attention and has no recurrent components, has demonstrated exceptional performance in a variety of language tasks and forms the basis of models like GPT and BERT.
+
+# Readings
+
+[Attention is all you need](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf)
+
+[A Review on Speech Emotion Recognition Using Deep Learning and Attention Mechanism](https://media.proquest.com/media/hms/PFT/1/MBNNJ?_s=gffnUf2uaR6mZK4Gt89qM%2BdO74M%3D)
+
+[Attention mechanisms in computer vision: A survey](https://link.springer.com/article/10.1007/s41095-022-0271-y)
