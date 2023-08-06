@@ -27,3 +27,37 @@ The introduction of attention mechanisms has been a turning point in the develop
 [A Review on Speech Emotion Recognition Using Deep Learning and Attention Mechanism](https://media.proquest.com/media/hms/PFT/1/MBNNJ?_s=gffnUf2uaR6mZK4Gt89qM%2BdO74M%3D)
 
 [Attention mechanisms in computer vision: A survey](https://link.springer.com/article/10.1007/s41095-022-0271-y)
+
+# Code example
+
+Step 1: Data Preparation
+
+We start by defining a dummy English to French translation dataset using the TranslationDataset class. This dataset contains training pairs, where each pair consists of an English sentence and its corresponding French translation. We also build vocabularies for the input and output languages to convert words into indices for model processing.
+
+Step 2: Building the Encoder
+
+Next, we define the Encoder class, representing the encoder part of the sequence-to-sequence model. The encoder has an embedding layer to convert input words into dense vectors, and a GRU layer (Gated Recurrent Unit) to process the input sequence. The encoder processes each word in the input sequence and produces both the final hidden state and the entire sequence of hidden states.
+
+Step 3: Building the Attention Layer
+
+We introduce the Attention class, which represents the attention mechanism. Attention allows the decoder to focus on specific parts of the encoder's output at each decoding step. The attention layer calculates attention weights based on the similarity between the decoder's current hidden state and each hidden state in the encoder's output sequence. It then computes a context vector, which is a weighted sum of the encoder's hidden states based on these attention weights.
+
+Step 4: Building the Decoder
+
+We define the Decoder class, representing the decoder part of the sequence-to-sequence model. The decoder has an embedding layer and a GRU layer, similar to the encoder. Additionally, it includes the previously introduced Attention layer. The decoder takes the decoder's input, previous hidden state, and the encoder's output sequence to generate the output probabilities for each word in the output vocabulary.
+
+Step 5: Building the Encoder-Decoder Model with Attention
+
+We create the EncoderDecoderAttention class, combining the encoder and decoder with attention into a single model. During training, this model takes the source sequence (English sentence) and target sequence (French translation) as inputs. The encoder processes the source sequence and produces both the final hidden state and the entire sequence of hidden states. The decoder then uses these hidden states, along with attention, to generate the target sequence. The attention mechanism helps the decoder align with the relevant parts of the source sequence, making the translation more accurate.
+
+Step 6: Training the Model
+
+We define the loss function (CrossEntropyLoss) and the optimizer (Adam) for training. We then run a loop for a specified number of epochs to train the model. In each epoch, we forward propagate the input sequences through the model, calculate the loss by comparing the predicted output with the ground truth output, and update the model's parameters using backpropagation and the Adam optimizer.
+
+Step 7: Translating New Sentences
+
+After training, we define a function (translate_sentence) to translate new English sentences into French. The function takes an English sentence, encodes it using the trained encoder, and then decodes it using the trained decoder with attention. The decoder generates the French translation one word at a time, taking into account the attention mechanism, until it predicts an end-of-sequence token.
+
+Step 8: Test Translation
+
+Finally, we test the trained model by providing a new English sentence ("We are happy") and obtaining its French translation using the translate_sentence function. The translated French sentence is then displayed.
